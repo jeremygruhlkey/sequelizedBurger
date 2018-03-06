@@ -1,0 +1,21 @@
+<h1> Eat yo self a burger!</h1>
+
+<h2> Burgers You've made!</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#unless eaten}}
+            <p>Name: {{name}}</p>
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>You done et these</h2>
+
+<ul>
+    {{#each burgers}}
+        {{#if eaten}}
+            <p>Name: {{name}}</p>
+        {{/if}}
+    {{/each}}
+</ul>

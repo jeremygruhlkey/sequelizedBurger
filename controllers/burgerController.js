@@ -17,6 +17,7 @@ router.post("/api/burgers/", function(req, res){
 router.put("/api/burgers/:id", function(req, res){
     let condition = "id = " + req.params.id;
     console.log(condition);
+    console.log(req.body)
 
     burgerModel.update( {eaten: req.body.eaten}, condition, function(result){
         if (result.changedRows === 0){
@@ -28,10 +29,13 @@ router.put("/api/burgers/:id", function(req, res){
 
 router.get("/", function(req, res){
     burgerModel.all(function(data){
+        console.log(data);
         let allTheBurgers = {
             burgers: data
         };
-        res.json(allTheBurgers);
+        console.log(allTheBurgers);
+        // res.json(allTheBurgers);
+        res.render("index", allTheBurgers);
     })
 })
 
