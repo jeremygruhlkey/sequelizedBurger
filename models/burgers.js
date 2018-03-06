@@ -12,6 +12,20 @@ const burgerModel = {
             callback(result);
         });
     },
+
+    update: function(columnsAndValues, condition, callback) {
+        orm.update("burgers", columnsAndValues, condition, function(result){
+            console.log("modles")
+            console.log(result)
+            callback(result)
+        });
+    },
+
+    all: function(callback){
+        orm.all("burgers", function(result){
+            callback(result);
+        })
+    }
 };
 
 module.exports = burgerModel;
