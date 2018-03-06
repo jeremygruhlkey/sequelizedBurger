@@ -4,14 +4,17 @@
 var connection = require("../config/connection.js");
 
 var orm = {
-    create: function(table, columns, values) {
+    create: function(table, columns, values, callback) {
         let queryString = "INSERT INTO " + table + "(" + columns + ") VALUES (?, ?) ";
-        connection.query(queryString, values), function(err, result) {
-            if (err) throw err;
+        connection.query(queryString, values, function(err, result) {
+            if (err) {
+                throw err;
+            }
             console.log(result);
-        }
+            callback(result)
+        })
     },
-
+    
 
 }
 

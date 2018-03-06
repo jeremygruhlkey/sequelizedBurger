@@ -6,8 +6,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 
 //will take the following two out as rest of files structure develops
-var connection = require("./config/connection.js");
-var orm = require("./config/orm.js");
+// var connection = require("./config/connection.js");
+// var orm = require("./config/orm.js");
+var burgerModel = require("./models/burgers.js");
 
 var PORT = process.env.PORT || 3000;
 
@@ -40,5 +41,8 @@ app.listen(PORT, function() {
 
 // orm.create("cheese", 1);
 let columns = ["name", "eaten"];
-let values = ["bbq", 1];
-orm.create("burgers" , columns, values);
+let values = ["cheese", 0];
+burgerModel.create(columns, values, function(result){
+    console.log("server result")
+    console.log(result);
+})
