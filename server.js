@@ -6,9 +6,9 @@ var express = require("express");
 var bodyParser = require("body-parser");
 
 //will take the following two out as rest of files structure develops
-// var connection = require("./config/connection.js");
-// var orm = require("./config/orm.js");
-var burgerModel = require("./models/burgers.js");
+    // var connection = require("./config/connection.js");
+    // var orm = require("./config/orm.js");
+    // var burgerModel = require("./models/burgers.js");
 
 var PORT = process.env.PORT || 3000;
 
@@ -30,9 +30,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// var routes = require("./controllers/burgerController.js");
+var routes = require("./controllers/burgerController.js");
 
-// app.use(routes);
+app.use(routes);
 
 
 app.listen(PORT, function() {
@@ -40,9 +40,9 @@ app.listen(PORT, function() {
 });
 
 // orm.create("cheese", 1);
-let columns = ["name", "eaten"];
-let values = ["cheese", 0];
-burgerModel.create(columns, values, function(result){
-    console.log("server result")
-    console.log(result);
-})
+// let columns = ["name", "eaten"];
+// let values = ["cheese", 0];
+// burgerModel.create(columns, values, function(result){
+//     console.log("server result")
+//     console.log(result);
+// })
