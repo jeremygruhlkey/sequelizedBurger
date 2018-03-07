@@ -1,21 +1,23 @@
 <h1> Eat yo self a burger!</h1>
 
-<h2> Burgers You've made!</h2>
+<h2> Burgers to be ate!</h2>
 
 <ul>
     {{#each burgers}}
         {{#unless eaten}}
-            <p>Name: {{name}}</p>
+            {{> burgers/burger-block eaten=false }}
         {{/unless}}
     {{/each}}
 </ul>
 
-<h2>You done et these</h2>
+<h2>You done ate these uns!</h2>
 
 <ul>
     {{#each burgers}}
         {{#if eaten}}
-            <p>Name: {{name}}</p>
+            <li>
+                <p>{{name}}
+            </li>
         {{/if}}
     {{/each}}
 </ul>
