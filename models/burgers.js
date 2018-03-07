@@ -15,7 +15,7 @@ const burgerModel = {
 
     update: function(columnsAndValues, condition, callback) {
         orm.update("burgers", columnsAndValues, condition, function(result){
-            console.log("modles")
+            console.log("models")
             console.log(result)
             callback(result)
         });
