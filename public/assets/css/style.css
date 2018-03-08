@@ -53,5 +53,14 @@ h1 {
 .footer {
 	position: absolute;
     bottom: 5px;
-    text-align: right;
 }
+
+a:hover {
+    text-decoration: none;
+    color: red;
+}
+
+.link {
+    color: white;
+}
+
