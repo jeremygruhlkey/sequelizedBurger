@@ -3,11 +3,9 @@
 $(function() {
     $(".eat-it").on("click", function(event){
         let id = $(this).data("id");
-        let newEaten = $(this).data("newEaten");
         console.log("id: ", id);
-        console.log("newEaten: ", newEaten);
         let newEatenState = {
-            eaten: newEaten
+            eaten: 1
         };
         console.log("newEatenState:")
         console.log(newEatenState);
@@ -17,7 +15,22 @@ $(function() {
             data: newEatenState
         }).then(
             function(){
-                console.log("changed eaten to ", newEaten)
+                location.reload();
+            }
+        )
+    })
+
+    $(".burger-maker-form").on("submit", function(event) {
+        event.preventDefault();
+
+        let newBurger = { name: $("#burger").val().trim(), eaten: 0 };
+
+        $.ajax("/api/burgers/", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function() {
+                console.log("New burger created")
                 location.reload();
             }
         )

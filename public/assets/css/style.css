@@ -1,0 +1,17 @@
+body {
+    background-image: url('../images/simpleBurger.jpg');  
+    background-size: cover;
+}
+
+h1 {
+    color: red;
+}
+
+#burgerPic {
+    height: 700px;
+    width: 600px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    float: right;
+}
