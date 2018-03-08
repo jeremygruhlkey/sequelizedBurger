@@ -41,5 +41,10 @@ router.get("/", function(req, res){
     })
 })
 
+router.get("/api/burgers/", function(req, res){
+    burgerModel.all(function(data){
+        res.json(data)
+    })
+})
 
 module.exports = router;

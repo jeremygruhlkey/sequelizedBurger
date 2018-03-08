@@ -5,13 +5,53 @@ body {
 
 h1 {
     color: red;
+    font-size: 60px;
 }
 
-#burgerPic {
-    height: 700px;
-    width: 600px;
-    border: 2px;
-    border-style: solid;
-    border-color: black;
-    float: right;
+.everything-container {
+    margin-left: 530px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header-and-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.burger-boxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+
+.box-title {
+    text-align: center;
+}
+
+/* .eaten-box-title {
+    text-align: left;
+} */
+
+.burgers-built {
+    width: 225px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.burgers-eaten {
+    width: 225px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.footer {
+	position: absolute;
+    bottom: 5px;
+    text-align: right;
 }

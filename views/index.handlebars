@@ -1,42 +1,60 @@
 {{!-- {{> burgers/burger-image}} --}}
+<div class = "everything-container">
+<div class = "header-and-form" >
+    <h1>Burger Builder</h1>
 
-<h1> Eat yo self a burger!</h1>
+    <div class = "form">
+        <form class="burger-maker-form">
 
-<h2> Burgers to be ate!</h2>
+        <div class="form-group">
+            <button type="submit">Burger up!</button>
+            <input type="text" id="burger" name="name" size = "30">
+        </div>
 
-<ul>
-    {{#each burgers}}
-        {{#unless eaten}}
-            {{> burgers/burger-block eaten=true }}
-        {{/unless}}
-    {{/each}}
-</ul>
+        {{!-- <div class="form-group">
+            <label for="slee">Sleepy?</label><br>
+            <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
+            <input type="radio" name="sleepy" value="0"> Awake
+        </div> --}}
+        </form>
+    </div>
+</div>
+<div class = "burger-boxes" >
+    <div class = "burgers-built">
+        <div class = "box-title">
+        <h3> Burgers Built</h3>
+        </div>
+        <p>
+            {{#each burgers}}
+                {{#unless eaten}}
+                    {{> burgers/burger-block eaten=true }}
+                {{/unless}}
+            {{/each}}
+        </p>
+    </div>
 
-<h2>You done ate these uns!</h2>
+    
+    <div class = "burgers-eaten">
+        <div class = "box-title">
+        <h3>Burgers Eaten</h3>
+        </div>
+        <p>
+            {{#each burgers}}
+                {{#if eaten}}
+                   
+                        <p>{{name}}
+                    
+                {{/if}}
+            {{/each}}
+        </p>
+    </div>
+</div>
+</div>
 
-<ul>
-    {{#each burgers}}
-        {{#if eaten}}
-            <li>
-                <p>{{name}}
-            </li>
-        {{/if}}
-    {{/each}}
-</ul>
+<footer class="footer">
+    <div class="container">
+        <p><a href="/api/burgers/">Burger API</a> | <a href="https://github.com/jeremygruhlkey/Eat-da-Burger">GitHub Repo</a></p>
+    </div>
+</footer>
 
-<h2>Name yo burger!</h2>
-<form class="burger-maker-form">
 
-  <div class="form-group">
-    <button type="submit">Burger up!</button>
-    <input type="text" id="burger" name="name">
-  </div>
-
-  {{!-- <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div> --}}
-
-  
-</form>
