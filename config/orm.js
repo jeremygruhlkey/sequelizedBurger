@@ -39,9 +39,9 @@ function printQuestionMarks(num) {
 
 var orm = {
     
-    create: function(table, columns, values, callback) {
+    create: (table, columns, values, callback) => {
         let queryString = "INSERT INTO " + table + "(" + columns + ") VALUES (" + printQuestionMarks(values.length) + ")";
-        connection.query(queryString, values, function(err, result) {
+        connection.query(queryString, values, (err, result) => {
             if (err) {
                 throw err;
             }
@@ -50,9 +50,9 @@ var orm = {
         })
     },
 
-    update: function(table, columnsAndValues, condition, callback){
+    update: (table, columnsAndValues, condition, callback) => {
         let queryString = "UPDATE " + table + " SET " + objToSql(columnsAndValues) + " WHERE " + condition;
-        connection.query(queryString, function(err, result){
+        connection.query(queryString, (err, result) => {
             if(err) {
                 throw err;
             }
@@ -60,9 +60,9 @@ var orm = {
         });
     },
 
-    all: function(table, callback){
+    all: (table, callback) => {
         var queryString = "SELECT * FROM " + table + ";";
-        connection.query(queryString, function(err, result){
+        connection.query(queryString, (err, result) => {
             if (err) {
                 throw err;
             }

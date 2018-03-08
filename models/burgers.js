@@ -5,24 +5,24 @@
 const orm = require("../config/orm.js");
 
 const burgerModel = {
-    create: function(columns, values, callback) {
-        orm.create("burgers", columns, values, function(result){
+    create: (columns, values, callback) => {
+        orm.create("burgers", columns, values, (result) => {
             console.log("burgers.js result")
             console.log(result)
             callback(result);
         });
     },
 
-    update: function(columnsAndValues, condition, callback) {
-        orm.update("burgers", columnsAndValues, condition, function(result){
+    update: (columnsAndValues, condition, callback) => {
+        orm.update("burgers", columnsAndValues, condition, (result) => {
             console.log("models")
             console.log(result)
             callback(result)
         });
     },
 
-    all: function(callback){
-        orm.all("burgers", function(result){
+    all: (callback) => {
+        orm.all("burgers", (result) => {
             callback(result);
         })
     }

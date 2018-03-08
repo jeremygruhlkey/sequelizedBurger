@@ -8,20 +8,20 @@ var burgerModel = require("../models/burgers.js");
 
 
 // router.get("/")
-router.post("/api/burgers/", function(req, res){
-    burgerModel.create(["name", "eaten"], [req.body.name, req.body.eaten], function(result){
+router.post("/api/burgers/", (req, res) => {
+    burgerModel.create(["name", "eaten"], [req.body.name, req.body.eaten], (result) => {
         res.json({id: result.insertId});
     } )
 })
 
-router.put("/api/burgers/:id", function(req, res){
+router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
     
     console.log("test");
     console.log(condition);
     console.log(req.body)
 
-    burgerModel.update( {eaten: req.body.eaten}, condition, function(result){
+    burgerModel.update( {eaten: req.body.eaten}, condition, (result) => {
         if (result.changedRows === 0){
             return res.status(404).end();
         }
@@ -29,8 +29,8 @@ router.put("/api/burgers/:id", function(req, res){
     })
 })
 
-router.get("/", function(req, res){
-    burgerModel.all(function(data){
+router.get("/", (req, res) => {
+    burgerModel.all((data) => {
         console.log(data);
         let allTheBurgers = {
             burgers: data
@@ -41,8 +41,8 @@ router.get("/", function(req, res){
     })
 })
 
-router.get("/api/burgers/", function(req, res){
-    burgerModel.all(function(data){
+router.get("/api/burgers/", (req, res) => {
+    burgerModel.all( (data) => {
         res.json(data)
     })
 })
