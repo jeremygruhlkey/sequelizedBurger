@@ -1,5 +1,5 @@
 // mysql connection
-
+console.log(process.env);
 // Set up MySQL connection.
 var mysql = require("mysql");
 
