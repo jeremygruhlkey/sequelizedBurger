@@ -5,9 +5,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3030;
 
 var app = express();
+var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -30,7 +31,9 @@ var routes = require("./controllers/burgerController.js");
 app.use(routes);
 
 
-app.listen(PORT, function() {
-  console.log("App now listening at localhost:" + PORT);
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
 

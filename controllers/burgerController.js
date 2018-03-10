@@ -4,15 +4,19 @@ const express = require("express");
 
 const router = express.Router();
 
-var burgerModel = require("../models/burgers.js");
+var db = require("../models");
 
-
-// router.get("/")
 router.post("/api/burgers/", (req, res) => {
-    burgerModel.create(["name", "eaten"], [req.body.name, req.body.eaten], (result) => {
-        res.json({id: result.insertId});
-    } )
-})
+    db.Burger.create({
+        name: req.body.name,
+        eaten: req.body.eaten,
+    }).then((dbBurger) => {
+        res.json(dbBurger);
+    }).catch((error) => {
+        console.log(error);
+        res.send(404).send("Error")
+    });
+});
 
 router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
@@ -21,29 +25,34 @@ router.put("/api/burgers/:id", (req, res) => {
     console.log(condition);
     console.log(req.body)
 
-    burgerModel.update( {eaten: req.body.eaten}, condition, (result) => {
-        if (result.changedRows === 0){
-            return res.status(404).end();
-        }
-        res.status(200).end();
+    db.Burger.update(
+        {eaten: 1},
+            {
+                fields: ["eaten"],
+                where: {id: id}
+            }).then((dbBurger) => {
+                res.json(dbBurger);
+            })
     })
-})
+    // burgerModel.update( {eaten: req.body.eaten}, condition, (result) => {
+    //     if (result.changedRows === 0){
+    //         return res.status(404).end();
+    //     }
+    //     res.status(200).end();
+    // })
+
 
 router.get("/", (req, res) => {
-    burgerModel.all((data) => {
-        console.log(data);
-        let allTheBurgers = {
-            burgers: data
-        };
-        console.log(allTheBurgers);
-        // res.json(allTheBurgers);
-        res.render("index", allTheBurgers);
+    db.Burger.findAll({}).then((dbBurger) => {
+        console.log(dbBurger);
+        
+        res.render("index", dbBurger);
     })
 })
 
 router.get("/api/burgers/", (req, res) => {
-    burgerModel.all( (data) => {
-        res.json(data)
+    db.Burger.findAll( (dbBurger) => {
+        res.json(dbBurger)
     })
 })
 
