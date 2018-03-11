@@ -3,13 +3,9 @@
 $(function() {
     $(".eat-it").on("click", function(event){
         let id = $(this).data("id");
-        console.log("id: ", id);
         let newEatenState = {
             eaten: 1
         };
-        console.log("newEatenState:")
-        console.log(newEatenState);
-        // Send AJAX PUT request
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: newEatenState

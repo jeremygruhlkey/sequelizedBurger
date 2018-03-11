@@ -20,38 +20,31 @@ router.post("/api/burgers/", (req, res) => {
 
 router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
-    
-    console.log("test");
-    console.log(condition);
-    console.log(req.body)
 
     db.Burger.update(
         {eaten: 1},
             {
                 fields: ["eaten"],
-                where: {id: id}
+                where: {id: req.params.id}
             }).then((dbBurger) => {
                 res.json(dbBurger);
             })
     })
-    // burgerModel.update( {eaten: req.body.eaten}, condition, (result) => {
-    //     if (result.changedRows === 0){
-    //         return res.status(404).end();
-    //     }
-    //     res.status(200).end();
-    // })
 
 
 router.get("/", (req, res) => {
     db.Burger.findAll({}).then((dbBurger) => {
-        console.log(dbBurger);
+
+        let allTheBurgers = {
+            burgers: dbBurger
+        };
         
-        res.render("index", dbBurger);
+        res.render("index", allTheBurgers);
     })
 })
 
 router.get("/api/burgers/", (req, res) => {
-    db.Burger.findAll( (dbBurger) => {
+    db.Burger.findAll({}).then( (dbBurger) => {
         res.json(dbBurger)
     })
 })
